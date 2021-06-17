@@ -1,4 +1,4 @@
-# Beer Stock
+# Beer Stock :beers:
 
 Digital Innovation: Expert class - Developing Unit Tests for a API REST of beer stock management validation
 Live coding where it was developed unit tests to validade a system of beer stock management using API REST and created with Spring Boot.
@@ -16,12 +16,12 @@ To run in the terminal, in the project folder, type:
 
 > mvn spring-boot:run
 
-Open the address to visualize the project:
 
-> http://localhost:8080/api/v1/beers
 
 Prerequisites:
 
 > Java 11
+
 > Maven 3.8.1
+
 > Intelij IDEA Community or your favorite IDE
