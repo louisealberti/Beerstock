@@ -9,7 +9,7 @@ import one.digitalinnovation.beerstock.dto.BeerDTO;
 
 public class JsonConvertionUtils {
 
-    public static String asJsonString(BeerDTO beerDTO) {
+    public static String asJsonString(Object beerDTO) {
         try {
         	
             ObjectMapper objectMapper = new ObjectMapper();
