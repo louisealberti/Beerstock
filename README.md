@@ -10,7 +10,7 @@ The folowing topics were approached:
 - Foucus on unit tests: its importance in the software development cicle
 - Main frameworks for unit tests in Java: JUnit, Mockito and Hamcrest
 - Development of basic functionalities unit tests validation: create, list, search by name and deletion of beers
-- TDD: brief introduction with a empiric example o 2 main functionalities, the beer amount in stock increment and drecement (the second not finished yet)
+- TDD: brief introduction with a empiric example of 2 main functionalities, the beer amount in stock increment and drecement (the second not finished yet)
 
 To run in the terminal, in the project folder, type:
 
