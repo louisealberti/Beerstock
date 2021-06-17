@@ -19,6 +19,7 @@ import one.digitalinnovation.beerstock.builder.BeerDTOBuilder;
 import one.digitalinnovation.beerstock.dto.BeerDTO;
 import one.digitalinnovation.beerstock.entity.Beer;
 import one.digitalinnovation.beerstock.exception.BeerAlreadyRegisteredException;
+import one.digitalinnovation.beerstock.exception.BeerNotFoundException;
 import one.digitalinnovation.beerstock.mapper.BeerMapper;
 import one.digitalinnovation.beerstock.repository.BeerRepository;
 
@@ -67,6 +68,34 @@ public class BeerServiceTest {
 		// then
 		assertThrows(BeerAlreadyRegisteredException.class, () -> beerService.createBeer(expectedBeerDTO));
 
+	}
+	
+	@Test
+	void whenValidBeerNameIsGivenThenReturnABeer() throws BeerNotFoundException {
+		//given
+		BeerDTO expectedFoundBeerDTO = BeerDTOBuilder.builder().build().toBeerDTO();;
+		Beer expectedFoundBeer = beerMapper.toModel(expectedFoundBeerDTO);
+		
+		// when
+		when(beerRepository.findByName(expectedFoundBeer.getName())).thenReturn(Optional.of(expectedFoundBeer));
+		
+		// then
+		BeerDTO foundBeerDTO = beerService.findByName(expectedFoundBeerDTO.getName());
+		assertThat(foundBeerDTO, is(equalTo(expectedFoundBeerDTO)));	
+		
+	}
+	
+	@Test
+	void whenNoRegisteredBeerNameIsGivenThenThrowAnException() {
+		//given
+		BeerDTO expectedFoundBeerDTO = BeerDTOBuilder.builder().build().toBeerDTO();;
+		
+		// when
+		when(beerRepository.findByName(expectedFoundBeerDTO.getName())).thenReturn(Optional.empty());
+		
+		// then
+		assertThrows(BeerNotFoundException.class, () -> beerService.findByName(expectedFoundBeerDTO.getName()));
+		
 	}
 
 }
